@@ -1,20 +1,22 @@
 version: "3.8"
 
 services:
-  user-service:
-    image: kaanakdik/user-service:1.0
+  users:
+    build: ./user-service
     ports:
       - "5000:5000"
     deploy:
       replicas: 1
-      restart_policy:
-        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == kaanubuntuserver
 
-  product-service:
-    image: kaanakdik/product-service:1.0
+  products:
+    build: ./product-service
     ports:
       - "5001:5001"
     deploy:
       replicas: 1
-      restart_policy:
-        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == ubuntu
