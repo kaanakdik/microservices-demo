@@ -7,10 +7,20 @@ services:
       - "5000:5000"
     deploy:
       replicas: 1
+      placement:
+        constraints:
+          - node.hostname == kaanubuntuserver
 
+
+
+      
   product-service:
     image: kaanakdik/product-service:1.0
     ports:
       - "5001:5001"
     deploy:
       replicas: 1
+      placement:
+        constraints:
+          - node.hostname == ubuntu
+          
