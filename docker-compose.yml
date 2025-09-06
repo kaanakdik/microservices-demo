@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   user-service:
-    image: user-service:1.0
+    image: kaanakdik/user-service:1.0
     ports:
       - "5000:5000"
     deploy:
@@ -11,7 +11,7 @@ services:
         condition: on-failure
 
   product-service:
-    image: product-service:1.0
+    image: kaanakdik/product-service:1.0
     ports:
       - "5001:5001"
     deploy:
