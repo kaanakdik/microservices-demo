@@ -9,13 +9,6 @@ services:
       replicas: 2
       restart_policy:
         condition: on-failure
-<<<<<<< HEAD
-=======
-      placement:
-        constraints:
-          - node.labels.type == linuxmanager
-          - node.labels.type == linuxworker
->>>>>>> b846ed77b33a2e24c5514a41db3638f34f2e10d7
 
   product-service:
     image: kaanakdik/product-service:1.0
@@ -24,12 +17,4 @@ services:
     deploy:
       replicas: 2
       restart_policy:
-<<<<<<< HEAD
         condition: on-failure
-=======
-        condition: on-failure
-      placement:
-        constraints:
-          - node.labels.type == linuxmanager
-          - node.labels.type == linuxworker
->>>>>>> b846ed77b33a2e24c5514a41db3638f34f2e10d7
