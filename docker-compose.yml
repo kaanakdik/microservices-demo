@@ -11,7 +11,8 @@ services:
         condition: on-failure
       placement:
         constraints:
-          - node.platform.os == linux
+          - node.labels.type == linuxmanager
+          - node.labels.type == linuxworker
 
   product-service:
     image: kaanakdik/product-service:1.0
@@ -23,4 +24,5 @@ services:
         condition: on-failure
       placement:
         constraints:
-          - node.platform.os == linux
+          - node.labels.type == linuxmanager
+          - node.labels.type == linuxworker
