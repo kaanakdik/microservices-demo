@@ -9,9 +9,6 @@ services:
       replicas: 2
       restart_policy:
         condition: on-failure
-      placement:
-        constraints:
-          - node.platform.os == linux
 
   product-service:
     image: kaanakdik/product-service:1.0
@@ -21,6 +18,3 @@ services:
       replicas: 2
       restart_policy:
         condition: on-failure
-      placement:
-        constraints:
-          - node.platform.os == linux
