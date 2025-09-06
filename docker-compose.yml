@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   users:
-    build: ./user-service
+    image: kaanakdik/user-service:latest
     ports:
       - "5000:5000"
     deploy:
@@ -12,7 +12,7 @@ services:
           - node.hostname == kaanubuntuserver
 
   products:
-    build: ./product-service
+    image: kaanakdik/product-service:latest
     ports:
       - "5001:5001"
     deploy:
