@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+import requests
 
 app = Flask(__name__)
 
@@ -12,6 +13,17 @@ users = [
 @app.route("/users", methods=["GET"])
 def get_users():
     return jsonify(users)
+
+
+@app.route('/products-from-user')
+def get_products_from_user():
+    try:
+        response = requests.get("http://192.168.1.5:5001/products")
+        response.raise_for_status()
+        products = response.json()
+        return jsonify(products)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     # Flask default 5000 portunda çalışır
