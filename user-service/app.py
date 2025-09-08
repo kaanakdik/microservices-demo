@@ -1,24 +1,39 @@
 from flask import Flask, jsonify
 import requests
+import mysql.connector
+import os
 
 app = Flask(__name__)
 
-# Basit kullanıcı listesi (gerçekte DB'den gelir)
-users = [
-    {"id": 1, "name": "Kaan", "email": "kaan@example.com"},
-    {"id": 2, "name": "Ahmet", "email": "ahmet@example.com"},
-    {"id": 3, "name": "Ayşe", "email": "ayse@example.com"}
-]
+# Ortam değişkenlerinden DB bilgilerini oku
+DB_HOST = os.getenv("DB_HOST", "user-db")
+DB_USER = os.getenv("DB_USER", "root")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "secret")
+DB_NAME = os.getenv("DB_NAME", "user_service_db")
+
+def get_db_connection():
+    return mysql.connector.connect(
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        database=DB_NAME
+    )
 
 @app.route("/users", methods=["GET"])
 def get_users():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, name, email FROM users")
+    users = cursor.fetchall()
+    cursor.close()
+    conn.close()
     return jsonify(users)
 
 
 @app.route('/products-from-user')
 def get_products_from_user():
     try:
-        response = requests.get("http://192.168.1.5:5001/products")
+        response = requests.get("http://product-service:5001/products")
         response.raise_for_status()
         products = response.json()
         return jsonify(products)
