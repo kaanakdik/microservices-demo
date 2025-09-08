@@ -33,7 +33,7 @@ def get_users():
 @app.route('/products-from-user')
 def get_products_from_user():
     try:
-        response = requests.get("http://product-service111:5001/products")
+        response = requests.get("http://192.168.1.5:5001/products")
         response.raise_for_status()
         products = response.json()
         return jsonify(products)
