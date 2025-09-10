@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS microservices;
+CREATE DATABASE IF NOT EXISTS user_service_db;
 
-USE microservices;
+USE user_service_db;
 
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -11,5 +11,5 @@ CREATE TABLE IF NOT EXISTS users (
 INSERT INTO users (name, email) VALUES
 ('Kaan', 'kaan@example.com'),
 ('Ahmet', 'ahmet@example.com'),
-('Ayşe', 'ayse@example.com');
+('Ayşe', 'ayse@example.com'),
 ('Harun', 'Harun@example.com');
