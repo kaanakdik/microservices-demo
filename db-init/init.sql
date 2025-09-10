@@ -12,4 +12,5 @@ INSERT INTO users (name, email) VALUES
 ('Kaan', 'kaan@example.com'),
 ('Ahmet', 'ahmet@example.com'),
 ('Ayşe', 'ayse@example.com'),
-('Harun', 'Harun@example.com');
+('Harun', 'harun@example.com'),
+('Necla', 'necla@example.com');
